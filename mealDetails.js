@@ -214,6 +214,9 @@ function removeMeal(array, value) {
 }
 
 function checkLocalStorage(item) {
+  if (localStorage.getItem('mealUrl') === null) {
+    localStorage.setItem('mealUrl', '[]');
+  }
   const meals = JSON.parse(localStorage.getItem('mealUrl' || '[]'));
   if (meals.includes(item)) {
     favStatus = true;
