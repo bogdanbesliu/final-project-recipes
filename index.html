@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Food inspiration from the fridge</title>
+  </head>
+  <body>
+    <header class="top-container">
+      <h1>What's in your fridge?</h1>
+      <form action="" class="search">
+        <div class="search-bar">
+          <input type="text" class="search-input" />
+          <button type="submit" class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <ul class="search-ingredients">
+          <li>
+            <input
+              type="image"
+              value="eggs"
+              src="https://cdn.pixabay.com/photo/2019/05/26/20/17/eggs-4231182_960_720.jpg"
+              data-ingredient
+            />
+            <p>Eggs</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="rice"
+              src="https://cdn.pixabay.com/photo/2014/10/22/18/43/rice-498688_960_720.jpg"
+              data-ingredient
+            />
+            <p>Rice</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="beef"
+              src="https://cdn.pixabay.com/photo/2018/02/08/15/02/meat-3139641_960_720.jpg"
+              data-ingredient
+            />
+            <p>Beef</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="mushrooms"
+              src="https://cdn.pixabay.com/photo/2014/07/10/20/55/mushrooms-389421_960_720.jpg"
+              data-ingredient
+            />
+            <p>Mushrooms</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="potatoes"
+              src="https://cdn.pixabay.com/photo/2014/08/06/20/32/potatoes-411975_960_720.jpg"
+              data-ingredient
+            />
+            <p>Potatoes</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="tomatoes"
+              src="https://cdn.pixabay.com/photo/2011/03/16/16/01/tomatoes-5356_960_720.jpg"
+              data-ingredient
+            />
+            <p>Tomatoes</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="onions"
+              src="https://cdn.pixabay.com/photo/2016/05/16/22/47/onions-1397037_960_720.jpg"
+              data-ingredient
+            />
+            <p>Onions</p>
+          </li>
+          <li>
+            <input
+              type="image"
+              value="carrots"
+              src="https://cdn.pixabay.com/photo/2016/07/11/00/18/carrots-1508847_960_720.jpg"
+              data-ingredient
+            />
+            <p>Carrots</p>
+          </li>
+        </ul>
+      </form>
+    </header>
+
+    <main>
+      <h4 class="recomended-meal">Recommended meal</h4>
+      <div class="main-container"></div>
+    </main>
+    <section class="favorite-meals">
+      <h4>Favorite Meals</h4>
+      <div class="favorite-meals-container"></div>
+    </section>
+    <section class="search-meals-cotainer" id="search-container">
+      <h4>Fridge inspiration meals</h4>
+      <div class="search-meals"></div>
+    </section>
+    <button class="btt">^</button>
+    <script src="index.js"></script>
+  </body>
+</html>
