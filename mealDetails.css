@@ -7,7 +7,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #bcc8e7;
+  background-color: #00bebe;
 }
 
 img {
@@ -34,6 +34,18 @@ img {
   align-items: center;
 }
 
+.top-line .buttons {
+  width: 7%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-line i {
+  color: #00bebe;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .sc {
   position: fixed;
   bottom: 4%;
@@ -51,15 +63,15 @@ img {
 
 .fa-shopping-basket::after {
   content: attr(data-nr-items);
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   background: #00bebe;
   color: white;
   border-radius: 100%;
   height: 50px;
   width: 50px;
-  padding: 5px 7px 5px 7px;
+  padding: 7px 10px 7px 10px;
   position: relative;
-  left: -3px;
+  right: 10px;
   top: -15px;
   opacity: 0.9;
 }
@@ -85,9 +97,8 @@ img {
   display: grid;
   grid-template-columns: 30px 3fr 1fr;
   grid-gap: 10%;
-  border-radius: 15px;
   border-radius: 20px;
-  box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.2);
+  box-shadow: 2px 12px 18px -9px rgba(8, 8, 8, 0.3);
 }
 
 .instructions {
@@ -97,6 +108,17 @@ img {
 
 .disable {
   display: none;
+}
+.instructions-title {
+  margin-top: 2%;
+}
+.meal-instructions {
+  columns: 500px 2;
+  padding: 3% 2% 2% 2%;
+  border-radius: 20px;
+  box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.2);
+  white-space: pre-wrap;
+  height: auto;
 }
 
 /* Modal */
@@ -110,36 +132,39 @@ img {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal .modal-content {
+  border-radius: 20px;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 50%;
   min-height: 100px;
+  box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.2);
 }
 
 .modal .modal-content h2 {
+  font-size: 2rem;
   text-align: center;
 }
 
 .modal .close {
   float: right;
   color: #aaa;
-  font-size: 28px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .modal .remove-all {
-  margin-right: 30px;
+  margin-right: 2%;
   float: right;
-  color: black;
-  font-size: 28px;
+  color: #00bebe;
   font-weight: bold;
+  cursor: pointer;
+  font-size: 1.8rem;
 }
 
 .modal .close:hover,
@@ -147,4 +172,14 @@ img {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-content .shopping-list div {
+  display: flex;
+  font-size: 1.4rem;
+  margin-bottom: 1%;
+}
+
+.modal-content .shopping-list div .shopping-item {
+  margin-left: 2%;
 }

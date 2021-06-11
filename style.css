@@ -51,6 +51,7 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 0px 12px 18px -6px rgba(8, 8, 8, 0.2);
+  font-size: 1rem;
 }
 
 .top-container form .search-btn {
@@ -71,6 +72,7 @@ body {
 .top-container form ul li {
   list-style-type: none;
   margin-right: 3%;
+  text-align: center;
 }
 
 .top-container form ul li input {
@@ -157,6 +159,15 @@ main h4 {
   border-bottom-right-radius: 20px;
 }
 
+.search-meals a {
+  text-decoration: none;
+}
+
+.search-meals h2 {
+  font-size: 1.2rem;
+  color: black;
+}
+
 .main-container h2 {
   position: absolute;
   width: 60%;
@@ -169,6 +180,8 @@ main h4 {
 }
 
 .btt {
+  width: 50px;
+  height: 50px;
   position: fixed;
   bottom: 20px;
   right: 30px;
@@ -177,9 +190,10 @@ main h4 {
   outline: none;
   background-color: #008383;
   color: white;
+  font-size: 1rem;
   cursor: pointer;
   padding: 15px;
-  border-radius: 15px;
+  border-radius: 100%;
   font-weight: 900;
 }
 
@@ -223,4 +237,10 @@ main h4 {
 
 .fav-card h2 {
   text-align: center;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.fav-card a {
+  text-decoration: none;
 }

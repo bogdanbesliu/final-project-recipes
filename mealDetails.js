@@ -72,6 +72,7 @@ async function getMealDetails() {
     <p class="meal-category">Category: ${meal.strCategory}</p>
     <p class="meal-area">Food culture of origin: ${meal.strArea}</p>`;
   generatedHTML2 = `
+    <h2 class="instructions-title">How to make?</h2>
     <p class="meal-instructions">${meal.strInstructions}</p>
   </main>
   `;
@@ -88,7 +89,6 @@ ingredientDiv.addEventListener('click', (e) => {
   let el = e.target;
   if (el.matches(addSelector)) {
     let item = e.target.dataset.ingredient;
-    //    el.classList.add('disable');
     addToShoppingList(item);
   }
 });
