@@ -11,6 +11,7 @@ const closeModal = document.querySelector('.close');
 const removeAllItems = document.querySelector('.remove-all');
 const favMeals = [];
 const shoppingItems = [];
+let shoppingListItems = [];
 let favStatus = false;
 let g = -1;
 
@@ -100,14 +101,11 @@ function addToShoppingList(item) {
   y.appendChild(w);
   let x = document.createElement('p');
   x.classList.add('shopping-item');
-  console.log(shoppingCart.dataset.nrItems);
-  console.log(shoppingList.children);
-  console.log(shoppingList.children.length);
   shoppingCart.dataset.nrItems = shoppingList.children.length += 1;
   x.innerText = item;
   y.appendChild(x);
   shoppingList.appendChild(y);
-  saveData();
+  saveData(item);
 }
 
 const extractSelector = '.minus';
@@ -122,7 +120,6 @@ shoppingList.addEventListener('click', (e) => {
 function removeFromShoppingList(item) {
   shoppingList.removeChild(item);
   shoppingCart.dataset.nrItems = shoppingList.children.length--;
-
   saveData();
 }
 
@@ -199,12 +196,16 @@ function addMealToFavorites(item) {
   }
 }
 
+function removeIngredientFromList(item) {
+  const retrieveMeals = localStorage.getItem('ingredients');
+  const meals = JSON.parse(retrieveMeals);
+  localStorage.setItem('ingredients', JSON.stringify(removeMeal(meals, item)));
+}
+
 function removeMealFromFavorites(item) {
   const retrieveMeals = localStorage.getItem('mealUrl');
   const meals = JSON.parse(retrieveMeals);
   localStorage.setItem('mealUrl', JSON.stringify(removeMeal(meals, item)));
-  console.log(meals);
-  // localStorage.setItem('mealUrl', favMeals);
 }
 
 function removeMeal(array, value) {
