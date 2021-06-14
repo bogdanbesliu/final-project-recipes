@@ -88,7 +88,8 @@ main {
 
 main h4 {
   margin-bottom: 3%;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .main-container {
@@ -166,6 +167,7 @@ main h4 {
 .search-meals h2 {
   font-size: 1.2rem;
   color: black;
+  font-weight: 600;
 }
 
 .main-container h2 {
@@ -203,12 +205,14 @@ main h4 {
 
 .favorite-meals h4 {
   margin-top: 5%;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .search-meals-cotainer h4 {
   margin-top: 5%;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .favorite-meals-container {

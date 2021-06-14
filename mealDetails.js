@@ -41,6 +41,7 @@ async function getMealDetails() {
     let x = document.createElement('p');
     x.classList.add('add-to-list');
     x.innerHTML = `<i class="fas fa-plus-circle plus" data-ingredient="${ingredients[g]}" data-measure="${measures[g]}"></i>`;
+    x.setAttribute('title', 'Add item to shopping-list');
     let y = document.createElement('div');
     let z = document.createElement('span');
     let w = document.createElement('span');
@@ -97,6 +98,7 @@ function addToShoppingList(item) {
   shoppingItems.push(item);
   let y = document.createElement('div');
   let w = document.createElement('i');
+  w.setAttribute('title', 'Remove item from shopping-list');
   w.classList.add('fas', 'fa-minus-circle', 'minus');
   y.appendChild(w);
   let x = document.createElement('p');
