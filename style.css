@@ -190,11 +190,11 @@ main h4 {
   outline: none;
   background-color: #008383;
   color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  padding: 15px;
+  padding: 14px 16px 14px 12px;
   border-radius: 100%;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .btt:hover {

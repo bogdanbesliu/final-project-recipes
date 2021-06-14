@@ -79,10 +79,15 @@ img {
 .meal-title {
   padding: 1% 0 1% 0;
   font-size: 3rem;
+  margin-bottom: 1%;
 }
 
 .meal-category .meal-area {
   font-display: 1rem;
+}
+
+main {
+  margin-bottom: 2%;
 }
 
 .ingredient-list {
@@ -95,10 +100,14 @@ img {
 .ingredient-list div {
   padding: 20px 30% 20px 20px;
   display: grid;
-  grid-template-columns: 30px 3fr 1fr;
+  grid-template-columns: 30px 3fr 3fr;
   grid-gap: 10%;
   border-radius: 20px;
   box-shadow: 2px 12px 18px -9px rgba(8, 8, 8, 0.3);
+}
+
+.ingredient-list i:hover {
+  color: #00bebe;
 }
 
 .instructions {
@@ -149,6 +158,7 @@ img {
 .modal .modal-content h2 {
   font-size: 2rem;
   text-align: center;
+  margin-bottom: 2%;
 }
 
 .modal .close {
@@ -176,10 +186,14 @@ img {
 
 .modal-content .shopping-list div {
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   margin-bottom: 1%;
 }
 
 .modal-content .shopping-list div .shopping-item {
   margin-left: 2%;
+}
+
+.modal-content .shopping-list i:hover {
+  color: #00bebe;
 }
