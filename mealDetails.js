@@ -1,5 +1,7 @@
 const ingredients = [];
 const measures = [];
+const favMeals = [];
+const shoppingItems = [];
 const container = document.querySelector('.container');
 const headerDiv = document.querySelector('.header');
 const ingredientDiv = document.querySelector('.ingredient-list');
@@ -9,8 +11,6 @@ const shoppingCart = document.querySelector('.sc');
 const modal = document.querySelector('#modal');
 const closeModal = document.querySelector('.close');
 const removeAllItems = document.querySelector('.remove-all');
-const favMeals = [];
-const shoppingItems = [];
 let shoppingListItems = [];
 let favStatus = false;
 let g = -1;
@@ -66,8 +66,8 @@ async function getMealDetails() {
   <div class="top-line">
     <h1 class="meal-title">${meal.strMeal}</h1>
     <div class="buttons">
-    <i class="favorite ${favStar} fa-star"></i>
-    <a href="index.html"><i class="fas fa-home"></i></a>
+    <i class="favorite ${favStar} fa-star" title="Set recipe as favorite"></i>
+    <a href="index.html"><i class="fas fa-home" title="Back to home page"></i></a>
     </div>
     </div>
     <p class="meal-category">Category: ${meal.strCategory}</p>
@@ -153,11 +153,6 @@ function loadData() {
   shoppingList.innerHTML = localStorage.getItem('shoppinglist');
   shoppingCart.dataset.nrItems = localStorage.getItem('itemsNr');
 }
-
-// function clearData() {
-//   shoppingList.innerHTML = '';
-//   shoppingCart.dataset.nrItems = 0;
-// }
 
 window.addEventListener('load', function () {
   loadData();
