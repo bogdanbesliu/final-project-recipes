@@ -2,15 +2,25 @@ const ingredients = [];
 const measures = [];
 const favMeals = [];
 const shoppingItems = [];
+const recipe = [];
 const container = document.querySelector('.container');
 const headerDiv = document.querySelector('.header');
+const nutritionDiv = document.querySelector('.nutritionValues');
 const ingredientDiv = document.querySelector('.ingredient-list');
 const instructionsDiv = document.querySelector('.instructions');
 const shoppingList = document.querySelector('.shopping-list');
 const shoppingCart = document.querySelector('.sc');
 const modal = document.querySelector('#modal');
 const closeModal = document.querySelector('.close');
+const nutritionModal = document.querySelector('#nutrition-modal');
+const closeNutritionModal = document.querySelector('.close-nutrition');
+const nutritionValues = document.querySelector('.nutritional-list');
+const calorieArea = document.querySelector('.calorie-count');
+const calories = document.querySelector('.calories');
+const nutritionBtn = document.querySelector('.nutrition');
 const removeAllItems = document.querySelector('.remove-all');
+const NutritionUrl =
+  'https://api.edamam.com/api/nutrition-details?app_id=f802b508&app_key=4c0ca319659b29ee846b94193850f060';
 let shoppingListItems = [];
 let favStatus = false;
 let g = -1;
@@ -32,10 +42,12 @@ async function getMealDetails() {
     if (meal[`strIngredient${i}`]) {
       ingredients.push(`${meal[`strIngredient${i}`]}`);
       measures.push(`${meal[`strMeasure${i}`]}`);
+      recipe.push(meal[`strMeasure${i}`] + ' ' + meal[`strIngredient${i}`]);
     } else {
       break;
     }
   }
+
   ingredients.forEach(() => {
     g++;
     let x = document.createElement('p');
@@ -77,11 +89,19 @@ async function getMealDetails() {
     <p class="meal-instructions">${meal.strInstructions}</p>
   </main>
   `;
+
+  let iT = document.createElement('h2');
+  iT.innerText = 'Ingredients';
+  iT.classList.add('instructions-title', 'innerTitle');
+
   headerDiv.innerHTML = generatedHTML1;
   container.appendChild(headerDiv);
+  container.appendChild(calorieArea);
+  container.appendChild(iT);
   container.appendChild(ingredientDiv);
   instructionsDiv.innerHTML = generatedHTML2;
   container.appendChild(instructionsDiv);
+  getNutritionValues(meal);
 }
 getMealDetails();
 
@@ -141,6 +161,16 @@ window.onclick = function (e) {
   }
 };
 
+closeNutritionModal.onclick = function () {
+  nutritionModal.style.display = 'none';
+};
+
+window.onclick = function (e) {
+  if (e.target == nutritionModal) {
+    nutritionModal.style.display = 'none';
+  }
+};
+
 function saveData() {
   localStorage.setItem('shoppinglist', shoppingList.innerHTML);
   localStorage.setItem('itemsNr', shoppingCart.dataset.nrItems);
@@ -162,6 +192,10 @@ removeAllItems.addEventListener('click', () => {
   shoppingList.innerHTML = '';
   shoppingCart.dataset.nrItems = 0;
   saveData();
+});
+
+nutritionBtn.addEventListener('click', () => {
+  nutritionModal.style.display = 'block';
 });
 
 const favSelector = '.favorite';
@@ -221,3 +255,100 @@ function checkLocalStorage(item) {
   }
   return favStatus;
 }
+
+async function getNutritionValues(meal) {
+  const recipeBody = {
+    title: meal.StrMeal,
+    ingr: recipe,
+  };
+  const settings = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(recipeBody),
+  };
+  try {
+    const fetchResponse = await fetch(NutritionUrl, settings);
+    const data = await fetchResponse.json();
+    console.log(data);
+    calories.innerText = `${data.calories} cal`;
+    nutritionDiv.innerHTML = `
+    <div class="nutrition-facts">
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">Calories</span>
+    <span class="nutrition-item-content">${data.calories}</span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+    ${
+      data.totalNutrients.CHOCDF.label
+    }</span><span class="nutrition-item-content">${data.totalNutrients.CHOCDF.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.CHOCDF.unit} </span>
+</div>
+<div class="nutrition-item">
+<span class="nutrition-item-label">
+  ${
+    data.totalNutrients.SUGAR.label
+  }</span><span class="nutrition-item-content">${data.totalNutrients.SUGAR.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.SUGAR.unit} </span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+  ${
+    data.totalNutrients.FAT.label
+  }</span><span class="nutrition-item-content">${data.totalNutrients.FAT.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.FAT.unit} </span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+  ${
+    data.totalNutrients.FAMS.label
+  } fats</span><span class="nutrition-item-content">${data.totalNutrients.FAMS.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.FAMS.unit} </span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+  ${
+    data.totalNutrients.FASAT.label
+  } fats</span><span class="nutrition-item-content">${data.totalNutrients.FASAT.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.FASAT.unit} </span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+  ${
+    data.totalNutrients.FATRN.label
+  } fats</span><span class="nutrition-item-content">${data.totalNutrients.FATRN.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.FATRN.unit} </span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+  ${
+    data.totalNutrients.FIBTG.label
+  }</span><span class="nutrition-item-content">${data.totalNutrients.FIBTG.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.FIBTG.unit} </span>
+    </div>
+    <div class="nutrition-item">
+    <span class="nutrition-item-label">
+  ${
+    data.totalNutrients.PROCNT.label
+  }</span><span class="nutrition-item-content">${data.totalNutrients.PROCNT.quantity.toFixed(
+      2
+    )} ${data.totalNutrients.PROCNT.unit} </span>
+    </div>
+    </div>
+    `;
+  } catch (e) {
+    console.log('error:', e);
+  }
+}
+
+nutritionValues.appendChild(nutritionDiv);

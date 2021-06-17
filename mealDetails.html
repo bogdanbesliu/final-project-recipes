@@ -22,6 +22,11 @@
   <body>
     <div class="container">
       <div class="header"></div>
+      <div class="calorie-count">
+        <i class="nutrition fas fa-heartbeat" title="Nutritional values"></i>
+        <span class="calories"><span>
+        </div>
+      <div class="nutritionValues"></div>
       <div class="ingredient-list"></div>
       <div class="instructions"></div>
     </div>
@@ -37,6 +42,21 @@
         ></i>
         <h2>Your shopping list</h2>
         <div class="shopping-list"></div>
+      </div>
+    </div>
+    <div class="nutrition-modal" id="nutrition-modal">
+      <div class="nutrition-modal-content">
+        <div class="nutrition-modal-header">
+       <div class="nutrition-modal-header-title">
+        <h2>Nutrition Values</h2>
+        <p class="nutrition-detail">per recipe</p>
+       </div>
+        <i
+        class="fas fa-times-circle close-nutrition"
+        title="Close the nutrition list"
+      ></i>
+        </div>
+        <div class="nutritional-list"></div>
       </div>
     </div>
     <i
