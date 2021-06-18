@@ -1,3 +1,5 @@
+// Declaring constants and grabbing the HTML elements
+
 const ingredients = [];
 const measures = [];
 const favMeals = [];
@@ -25,13 +27,16 @@ let shoppingListItems = [];
 let favStatus = false;
 let g = -1;
 
+// Getting ID of the meal and setting the URL for the meal
+
 function getId() {
   const search = location.search.substr(1);
   const id = search.split('=');
   return id[1];
 }
-
 const url = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + getId();
+
+// Grabbing the meal details from The Meal DB API & Creating the page
 
 async function getMealDetails() {
   let response = await fetch(url);
@@ -105,6 +110,8 @@ async function getMealDetails() {
 }
 getMealDetails();
 
+// Add ingredient to shopping list event listener & functionality
+
 const addSelector = '.plus';
 ingredientDiv.addEventListener('click', (e) => {
   let el = e.target;
@@ -130,6 +137,8 @@ function addToShoppingList(item) {
   saveData(item);
 }
 
+// Remove ingredient from shopping list
+
 const extractSelector = '.minus';
 shoppingList.addEventListener('click', (e) => {
   let el = e.target;
@@ -145,7 +154,7 @@ function removeFromShoppingList(item) {
   saveData();
 }
 
-//Modal
+//Shipping list & Nutrition values modals
 
 shoppingCart.onclick = function () {
   modal.style.display = 'block';
@@ -171,10 +180,14 @@ window.onclick = function (e) {
   }
 };
 
+// Save shopping list to Local Storage
+
 function saveData() {
   localStorage.setItem('shoppinglist', shoppingList.innerHTML);
   localStorage.setItem('itemsNr', shoppingCart.dataset.nrItems);
 }
+
+// Load shopping list to Local Storage
 
 function loadData() {
   if (localStorage.getItem('itemsNr') === null) {
@@ -198,6 +211,8 @@ nutritionBtn.addEventListener('click', () => {
   nutritionModal.style.display = 'block';
 });
 
+// Check if meal is favorite and adjust icon acordingly
+
 const favSelector = '.favorite';
 headerDiv.addEventListener('click', (e) => {
   let el = e.target;
@@ -214,6 +229,8 @@ headerDiv.addEventListener('click', (e) => {
   }
 });
 
+// Add meal to favorites functionality (and save it to Local Storage)
+
 function addMealToFavorites(item) {
   if (localStorage.getItem('mealUrl') === null) {
     localStorage.setItem('mealUrl', '[]');
@@ -226,6 +243,8 @@ function addMealToFavorites(item) {
     console.log(item + ' already exists');
   }
 }
+
+// Remove ingredients from local Storage (from shopping list) & Remove meals from favorites (and local storage)
 
 function removeIngredientFromList(item) {
   const retrieveMeals = localStorage.getItem('ingredients');
@@ -255,6 +274,8 @@ function checkLocalStorage(item) {
   }
   return favStatus;
 }
+
+// Grabbing nutritional values from Edamame Nutrition API based on the title, ingredient and measures list & creating the nutrition values modal
 
 async function getNutritionValues(meal) {
   const recipeBody = {
@@ -347,7 +368,7 @@ async function getNutritionValues(meal) {
     </div>
     `;
   } catch (e) {
-    console.log('error:', e);
+    calories.innerText = 'Unable to calculate';
   }
 }
 

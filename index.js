@@ -1,3 +1,5 @@
+// Targeting the HTML elements and declaring variables
+
 const searchBtn = document.querySelector('.search-btn');
 const searchForm = document.querySelector('.search');
 const searchContainer = document.querySelector('.search-meals');
@@ -11,6 +13,8 @@ const favoriteMealsContainer = document.querySelector(
 let recipeUrl = [];
 let searchQuerry = '';
 
+// Event listener for the search bar
+
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (e.target.querySelector('input').value === '') {
@@ -20,6 +24,8 @@ searchForm.addEventListener('submit', (e) => {
   sendApiRequest();
 });
 
+// The search function that uses The Meal DP API
+
 async function sendApiRequest() {
   let response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchQuerry}`
@@ -27,6 +33,8 @@ async function sendApiRequest() {
   let data = await response.json();
   useApiData(data);
 }
+
+// Using the data to populate the search container
 
 function useApiData(results) {
   let generatedHTML = '';
@@ -48,6 +56,8 @@ function useApiData(results) {
   searchForm[0].value = '';
   document.getElementById('search-container').scrollIntoView();
 }
+
+// Random meal from The Meal DP API
 
 async function getRandomMeal() {
   let response = await fetch(
@@ -71,6 +81,8 @@ async function getRandomMeal() {
 
 getRandomMeal();
 
+// Preset ingredient sugestions
+
 ingSearch.forEach(function (button) {
   button.addEventListener('click', () => {
     searchForm[0].value = button.value;
@@ -78,12 +90,7 @@ ingSearch.forEach(function (button) {
   });
 });
 
-btt.addEventListener('click', topFunction);
-
-function topFunction() {
-  document.documentElement.scrollTop = 0;
-  document.body.scrollTop = 0; // For Safari
-}
+// Grabing favorite meals from Local Storage & using them on index in the dedicated section
 
 favoriteMeals.forEach(async (elem) => {
   let response = await fetch(elem);
@@ -98,3 +105,12 @@ favoriteMeals.forEach(async (elem) => {
   `;
   favoriteMealsContainer.appendChild(favDiv);
 });
+
+// Scroll to top button
+
+btt.addEventListener('click', topFunction);
+
+function topFunction() {
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0; // For Safari
+}
