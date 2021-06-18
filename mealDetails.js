@@ -187,7 +187,7 @@ function saveData() {
   localStorage.setItem('itemsNr', shoppingCart.dataset.nrItems);
 }
 
-// Load shopping list to Local Storage
+// Load shopping list from Local Storage
 
 function loadData() {
   if (localStorage.getItem('itemsNr') === null) {
@@ -240,7 +240,7 @@ function addMealToFavorites(item) {
     meals.push(item);
     localStorage.setItem('mealUrl', JSON.stringify(meals));
   } else {
-    console.log(item + ' already exists');
+    console.log(item + 'already exists');
   }
 }
 
@@ -293,7 +293,6 @@ async function getNutritionValues(meal) {
   try {
     const fetchResponse = await fetch(NutritionUrl, settings);
     const data = await fetchResponse.json();
-    console.log(data);
     calories.innerText = `${data.calories} cal`;
     nutritionDiv.innerHTML = `
     <div class="nutrition-facts">
@@ -368,6 +367,7 @@ async function getNutritionValues(meal) {
     </div>
     `;
   } catch (e) {
+    console.log('there was an error:', e);
     calories.innerText = 'Unable to calculate';
   }
 }

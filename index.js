@@ -92,6 +92,10 @@ ingSearch.forEach(function (button) {
 
 // Grabing favorite meals from Local Storage & using them on index in the dedicated section
 
+if (favoriteMeals.length === 0) {
+  favoriteMealsContainer.innerHTML = `<p>You didn't add any meals to favorites.</p>`;
+}
+
 favoriteMeals.forEach(async (elem) => {
   let response = await fetch(elem);
   let data = await response.json();
