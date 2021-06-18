@@ -7,15 +7,15 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: #00bebe;
+  background-color: #f3f3f3;
 }
 
 img {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 20px;
-  box-shadow: 0px 12px 18px -6px rgba(8, 8, 8, 0.5);
+  border-radius: 10px;
+  box-shadow: 0px 12px 18px -6px rgba(8, 8, 8, 0.1);
   margin-top: 3%;
 }
 
@@ -24,8 +24,6 @@ img {
   margin: 0 auto;
   background-color: white;
   padding: 0 2% 2% 2%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 
 .top-line {
@@ -150,10 +148,7 @@ main {
 .meal-instructions {
   columns: 500px 2;
   padding: 3% 2% 2% 0;
-  border-radius: 20px;
-  /* box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.2); */
   white-space: pre-wrap;
-  height: auto;
 }
 
 /* Modal */
@@ -244,24 +239,24 @@ main {
 
 .modal .modal-content {
   border-radius: 20px;
-  background-color: #fefefe;
+  background-color: black;
   margin: 15% auto;
   padding: 40px;
-  border: 1px solid #888;
   width: 50%;
   min-height: 100px;
-  box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.2);
+  box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.1);
 }
 
 .modal .modal-content h2 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 2%;
+  color: white;
 }
 
 .modal .close {
   float: right;
-  color: #aaa;
+  color: white;
   font-size: 1.5rem;
   font-weight: bold;
 }
@@ -269,15 +264,19 @@ main {
 .modal .remove-all {
   margin-right: 2%;
   float: right;
-  color: #00bebe;
+  color: white;
   font-weight: bold;
   cursor: pointer;
   font-size: 1.5rem;
 }
 
+.modal .remove-all:hover {
+  color: #00bebe;
+}
+
 .modal .close:hover,
 .close:focus {
-  color: black;
+  color: #00bebe;
   text-decoration: none;
   cursor: pointer;
 }
@@ -286,6 +285,7 @@ main {
   display: flex;
   font-size: 1.2rem;
   margin-bottom: 1%;
+  color: white;
 }
 
 .modal-content .shopping-list div .shopping-item {
@@ -294,4 +294,153 @@ main {
 
 .modal-content .shopping-list i:hover {
   color: #00bebe;
+}
+
+@media (max-width: 575.98px) {
+  body {
+    padding: 5%;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 0 4% 0 4%;
+  }
+
+  .top-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .top-line .buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5% 0% 5% 0%;
+  }
+
+  .sc {
+    position: fixed;
+    bottom: 4%;
+    right: 5%;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    font-size: 1.1rem;
+    color: white;
+    background-color: black;
+    border-radius: 100%;
+    height: 3rem;
+    width: 3rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .meal-title {
+    padding: 1% 0 1% 0;
+    font-size: 2.5rem;
+    margin-bottom: 1%;
+    margin-top: 1%;
+  }
+  .calorie-count {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ingredient-list {
+    padding: 5% 0% 5% 0;
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+  }
+
+  .ingredient-list div {
+    padding-left: 2%;
+    display: grid;
+    grid-template-columns: 10% 40% 50%;
+  }
+
+  .instructions {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .meal-instructions {
+    white-space: pre-wrap;
+  }
+
+  .nutrition-modal .nutrition-modal-content {
+    border-radius: 20px;
+    margin: 15% auto;
+    padding: 20px;
+    border: none;
+    width: 80%;
+    min-height: 100px;
+    background-color: #060f0f;
+    box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.2);
+  }
+
+  .nutrition-modal h2 {
+    font-size: 1.5rem;
+    color: white;
+  }
+  .nutrition-modal .nutrition-detail {
+    color: White;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+  .nutrition-item {
+    margin-bottom: 2%;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  .modal .modal-content {
+    border-radius: 20px;
+    background-color: black;
+    margin: 15% auto;
+    padding: 40px;
+    width: 90%;
+    min-height: 100px;
+    box-shadow: 2px 12px 18px -3px rgba(8, 8, 8, 0.1);
+  }
+
+  .modal .modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10%;
+    color: white;
+    text-align: left;
+  }
+
+  .modal .close {
+    float: right;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .modal .remove-all {
+    margin-right: 10%;
+    float: right;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 15%;
+  }
+
+  .modal-content .shopping-list div {
+    display: flex;
+    font-size: 1rem;
+    margin-bottom: 1%;
+    color: white;
+  }
+
+  .modal-content .shopping-list div .shopping-item {
+    margin-left: 5%;
+  }
 }

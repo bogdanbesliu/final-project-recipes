@@ -151,11 +151,11 @@ shoppingCart.onclick = function () {
   modal.style.display = 'block';
 };
 
-closeModal.onclick = function () {
+closeModal.onclick = function (e) {
   modal.style.display = 'none';
 };
 
-window.onclick = function (e) {
+document.onclick = function (e) {
   if (e.target == modal) {
     modal.style.display = 'none';
   }
